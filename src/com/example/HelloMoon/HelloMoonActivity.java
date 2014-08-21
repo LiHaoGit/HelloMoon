@@ -1,9 +1,10 @@
 package com.example.HelloMoon;
 
-import android.app.Activity;
-import android.os.Bundle;
 
-public class HelloMoonActivity extends Activity {
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+
+public class HelloMoonActivity extends FragmentActivity {
     /**
      * Called when the activity is first created.
      */
