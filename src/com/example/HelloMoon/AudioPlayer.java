@@ -12,6 +12,7 @@ public class AudioPlayer {
 
     public void stop(){
         if (mPlayer!=null){
+            //mPlayer.stop();
             mPlayer.release();
             mPlayer=null;
         }
