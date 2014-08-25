@@ -1,20 +1,19 @@
 package com.example.HelloMoon;
 
-import android.media.MediaPlayer;
-import android.net.Uri;
+
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.MediaController;
-import android.widget.VideoView;
+
 
 /**
  * Created by lee on 2014/8/21.
+ * 用户界面
  */
 public class HelloMoonFragment extends Fragment {
 
@@ -26,7 +25,14 @@ public class HelloMoonFragment extends Fragment {
     //播放视频要用mp4格式
     //private Uri uri= Uri.parse("android.resource://" + "com.example.HelloMoon/raw/apollo_17_stroll");
 
-    public static final String TAG="HelloMoonFragment";
+    //public static final String TAG="HelloMoonFragment";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //保存Fragment实例
+        setRetainInstance(true);
+    }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
