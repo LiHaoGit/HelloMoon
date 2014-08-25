@@ -18,18 +18,26 @@ public class AudioPlayer {
         }
     }
 
+    //开始播放,如果不为空,则为是恢复播放
     public void play(Context c){
-        stop();
-        mPlayer=MediaPlayer.create(c,R.raw.one_small_step);
 
-        mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                stop();
-            }
-        });
+        if(mPlayer==null) {
+            mPlayer = MediaPlayer.create(c, R.raw.one_small_step);
 
+            mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stop();
+                }
+            });
+        }
         mPlayer.start();
+    }
+
+    public void pause(){
+        if (mPlayer.isPlaying())
+            mPlayer.pause();
+
     }
 
 

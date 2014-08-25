@@ -1,12 +1,17 @@
 package com.example.HelloMoon;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 /**
  * Created by lee on 2014/8/21.
@@ -16,8 +21,13 @@ public class HelloMoonFragment extends Fragment {
     private AudioPlayer mPlayer=new AudioPlayer();
     private Button mPlayButton;
     private Button mStopButton;
+    private Button mPauseButton;
+    //private VideoView mVideoView;
+    //播放视频要用mp4格式
+    //private Uri uri= Uri.parse("android.resource://" + "com.example.HelloMoon/raw/apollo_17_stroll");
 
-    @Override
+    public static final String TAG="HelloMoonFragment";
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return super.onCreateView(inflater, container, savedInstanceState);
         View v=inflater.inflate(R.layout.hellomoon_fragment,container,false);
@@ -26,9 +36,18 @@ public class HelloMoonFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mPlayer.play(getActivity());
+                //mVideoView.requestFocus();
+                //mVideoView.start();
             }
         });
 
+        mPauseButton=(Button)v.findViewById(R.id.pauseButton);
+        mPauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mPlayer.pause();
+            }
+        });
 
         mStopButton =(Button)v.findViewById(R.id.stopButton);
         mStopButton.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +56,16 @@ public class HelloMoonFragment extends Fragment {
                 mPlayer.stop();
             }
         });
+        /*
+        播放视频
+        mVideoView=(VideoView)v.findViewById(R.id.moon_VideoView);
+        MediaController mMediaController=new MediaController(getActivity());
+        mVideoView.setMediaController(mMediaController);
+        mVideoView.setVideoURI(uri);
+        */
+
+
+
         return v;
     }
 
